@@ -11,17 +11,8 @@ stage('Génération des fichiers') {
 steps {
 echo 'Création de la page web index.html à la volée...'
 // La commande writeFile crée un fichier dans l'espace de travail de Jenkins
-writeFile file: 'index.html', text: '''
-<!DOCTYPE html>
-<html>
-<head><meta
-charset="UTF-8"></head>
-<body>
-<h1>Bonjour depuis mon conteneur Docker ! 🐳</h1>
-<p>Ce conteneur a été généré 100% localement par Jenkins, sans aucun Git !</p>
-</body>
-</html>
-'''
+readFile("index.html")
+
 
 echo 'Création du Dockerfile à la volée...'
 writeFile file: 'Dockerfile', text: '''
